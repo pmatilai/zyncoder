@@ -914,8 +914,8 @@ int jack_process_zmip(int iz, jack_nframes_t nframes) {
 		else {
 			if (jack_midi_event_get(&ev, input_port_buffer, i++)!=0) break;
 
-			//Ignore Active Sense & SysEx messages => Is it OK?
-			if (ev.buffer[0]==ACTIVE_SENSE || ev.buffer[0]==SYSTEM_EXCLUSIVE) continue;
+			//Ignore Active Sense messages => Is it OK?
+			if (ev.buffer[0]==ACTIVE_SENSE) continue;
 
 			//Get event type & chan
 			if (ev.buffer[0]>=SYSTEM_EXCLUSIVE) {
